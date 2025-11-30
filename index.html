@@ -10,11 +10,11 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>Nguyễn Văn Thanh & Trần Thị Tuyết Trinh</title>
+   <title>Nguyễn Văn Thanh &#9829; Trần Thị Nguyệt Trinh</title>
     <meta name="description" content="We would like to invite you to our big day.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#ffffff">
-    <meta property="og:title" content="Ram & Antara getting hitched">
+    <meta property="og:title" content="Thanh & Trinh getting hitched">
     <meta property="og:description" content="We would like to invite you to our big day.">
     <meta property="og:image" content="https://wedding.ramswaroop.me/img/hero-min.jpg">
     <meta property="og:type" content="website">
@@ -22,7 +22,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="manifest.json">
-    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <!-- <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5"> -->
 
     <script>
         // load css files from CDN if local node_modules fail
@@ -48,7 +48,9 @@
                 document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"><\/script>');
             }
         }
+    
     </script>
+
 
     <link rel="stylesheet" href="css/normalize.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -95,7 +97,6 @@
                 <div class="hero-content text-center">
                     <!--<h1>Ram and Antara</h1>-->
                     <img src="img/logo-lg.png">
-                    <!--<p class="intro">Ram & Antara are getting hitched!</p>-->
                     <!--<a href="#" class="btn btn-fill btn-large btn-margin-right">Scroll Down</a> -->
                 </div>
             </div>
@@ -277,12 +278,12 @@
                 </a>
             </div>
             <div class="col-md-2">
-                <a class="fancybox" rel="group" href="img/eng_pics/NGP_4089-lg.jpg">
+                <a class="fancybox " rel="group" href="img/eng_pics/NGP_4089-lg.jpg">
                     <div class="img-wrap">
                         <div class="overlay">
                             <i class="fa fa-search"></i>
                         </div>
-                        <img src="img/eng_pics/NGP_4089-sm.jpg" alt=""/>
+                        <img src="img/eng_pics/NGP_4089-sm.jpg" class="img-fluid"alt=""/>
                     </div>
                 </a>
             </div>
@@ -305,13 +306,13 @@
     </div>
 </section>
 
-<section id="video-bg" class="hidden-sm hidden-xs">
-    <div id="bgndVideo" class="player"
-         data-property="{videoURL:'https://youtu.be/9giqL1H6yRs',containment:'#video-bg',autoPlay:true, mute:true, showControls:false, startAt:80, stopAt:259, opacity:1}">
-    </div>
+<section id="video-bg">
+     <video id="bgndVideo" autoplay muted loop playsinline >
+        <source src="song/backgoundwedding.mp4" type="video/mp4">
+    </video>
     <div id="video-content">
-        <h5>Kolkata</h5>
-        <p>City of joy</p>
+        <!-- <h5>Kolkata</h5>
+        <p>City of joy</p> -->
     </div>
 </section>
 
@@ -390,13 +391,16 @@
       }
     </style>
   </section>
-  
-
-
-        </div><!-- /.modal-dialog -->
-    </div>/.modal -->
 
 </section>
+<audio id="bg-music" loop>
+    <source src="song/modoi.mp3" type="audio/mp3">
+</audio>
+
+<!-- Nút custom -->
+<div id="music-btn" class="paused" title="Bật / Tắt nhạc">
+    <i class="fa fa-music"></i>
+</div>
 
 <script src="js/vendor/jquery-1.11.2.min.js" onerror="loadJsFromCDN('jquery.js')"></script>
 <script src="node_modules/waypoints/lib/jquery.waypoints.min.js" onerror="loadJsFromCDN('waypoints.js')"></script>
@@ -423,6 +427,22 @@
     })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
     ga('create', 'UA-46465113-4', 'auto');
     ga('send', 'pageview');
+
+
+    const audio = document.getElementById("bg-music");
+        const btn = document.getElementById("music-btn");
+
+        btn.addEventListener("click", () => {
+            if(audio.paused) {
+                audio.play().catch(err => console.log(err));
+                btn.classList.add("playing");
+                btn.classList.remove("paused");
+            } else {
+                audio.pause();
+                btn.classList.remove("playing");
+                btn.classList.add("paused");
+            }
+        });
 </script>
 </body>
 </html>

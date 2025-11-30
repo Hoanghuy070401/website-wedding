@@ -11,6 +11,7 @@
 
 }
 
+
 @media screen and (max-width: 1024px) {
     .hero .hero-content {
         padding-top: 50%;
@@ -290,8 +291,20 @@
     }
 
 }
+@media screen and (max-width: 768px) {
+    .hero .hero-content img {
+        max-width: 80%;
+        height: auto;
+    }
 
-@media screen and (max-width: 480px) {
+    .hero .hero-content {
+        padding-top: 20%; /* giảm lại vì 50% đang quá nhiều */
+    }
+}
+
+
+
+ @media screen and (max-width: 480px) {
     .hero .hero-content {
         padding-top: 110%;
     }
@@ -354,6 +367,19 @@
     }
 
 }
+.hero {
+    background-size: cover !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hero {
+        background-size: contain !important;
+        background-color: #000; /* tránh bị lộ khoảng trống */
+         background-repeat: no-repeat !important;
+    background-position: center center !important;
+    }
+} 
 
 @media screen and (max-width: 320px) {
     .hero .hero-content {
@@ -364,3 +390,71 @@
         padding-top: 20px;
     }
 }
+#music-btn {
+    position: fixed;
+    top: 120px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #ff4081; /* màu hồng rực rỡ */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+    transition: transform 0.3s ease;
+}
+
+#music-btn:hover {
+    transform: scale(1.1);
+}
+
+#music-btn.playing {
+    animation: rotateMusic 2s linear infinite;
+}
+
+@keyframes rotateMusic {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+/* Section video background full màn hình */
+#video-bg {
+    position: relative;
+    width: 100vw;       /* full chiều ngang màn hình */
+    height: 100vh;      /* full chiều cao màn hình */
+    overflow: hidden;
+}
+
+/* Video phủ toàn section, giữ tỉ lệ */
+#bgndVideo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: 100%;           /* chiếm full chiều cao màn hình */
+    min-width: 100%;        /* đảm bảo phủ full width */
+    transform: translate(-50%, -50%);
+    object-fit: cover;      /* video cover section, không méo */
+    z-index: -1;
+}
+
+/* Nội dung overlay */
+#video-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;  /* căn giữa ngang */
+    align-items: center;      /* căn giữa dọc */
+    flex-direction: column;
+}
+
